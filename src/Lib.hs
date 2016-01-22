@@ -7,6 +7,8 @@ module Lib
     , groupQuote
     , mergeQuote
     , tstoargs
+    , tstoargs2
+    , indexedret
     ) where
 
 import Control.Monad
@@ -100,4 +102,10 @@ tstoargs (x:xs) = map (\y -> let (Quote {qTime = UnixTime {utSeconds = targetTS}
     where Quote {qTime = UnixTime {utSeconds = startTS}} = x
           startINT = read (show startTS) :: Int
           xs' = filter (\y -> let (Quote {qOpen = targetOP, qClose = targetCS}) = y
-                              in targetOP > targetCS) (x:xs)
+                              in (targetCS - targetOP) > 0.0001) (x:xs)
+
+indexedret xs = zip idxd xs
+                where idxd = [1..((length xs) - 1)]
+
+tstoargs2 xs = filter (\y -> let (idx, (Quote {qOpen = targetOP, qClose = targetCS})) = y
+                                         in (targetCS - targetOP) > 0.0004) xs
