@@ -6,6 +6,10 @@ resolver: lts-4.0
 # Local packages, usually specified by relative directory name
 packages:
 - '.'
+- ../bursts
+# - location:
+#   git: git@github.com:yasukun/bursts.git
+#   commit: cd01d9ba807e14245ee6c8cabb66350b7d2cfd09
 
 # Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
 extra-deps: []

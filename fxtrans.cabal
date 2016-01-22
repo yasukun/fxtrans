@@ -20,7 +20,8 @@ library
                      , attoparsec
                      , vector
                      , statistics
-                     , time
+                     , unix-time
+                     , bytestring
                      , text
   default-language:    Haskell2010
 
@@ -31,6 +32,7 @@ executable fxtrans-exe
   build-depends:       base
                      , fxtrans
                      , text
+                     , bursts
   default-language:    Haskell2010
 
 test-suite fxtrans-test
@@ -44,4 +46,4 @@ test-suite fxtrans-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/fxtrans
+  location: https://github.com/yasukun/fxtrans
